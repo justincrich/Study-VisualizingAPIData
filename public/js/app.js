@@ -54,6 +54,7 @@ function loadContacts(){
         let location = element.querySelector('#location');
             location.innerHTML = item.location.city+', '+ item.nat;
 
+
         element.onclick = ()=>{
           document.querySelector('.modal .img img').src = item.picture.large;
           document.querySelector('.modal .name').innerHTML = item.name.first+' '+item.name.last;
