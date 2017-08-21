@@ -32,12 +32,43 @@ html {
 /* -----------------
 HEADER
 -------------------*/
-
+.header{
+  margin-left: 12px;
+  margin-bottom: 15px;
+  justify-content: flex-start;
+  max-width: 400px;
+}
 .header h4{
   color:rgba(91, 91, 91, 1);
   font-weight: 500;
-  margin-left: 15px;
+  margin-left:0px;
+}
+.search{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header .search input{
 
+
+  width:300px;
+  border-radius: 25px;
+  border:1px solid rgba(91, 91, 91, .3);
+  font-size: 16px;
+  height: 25px;
+  text-indent:32px;
+
+
+}
+
+.header .search input:focus{
+  outline-width: 0px;
+}
+
+.header .search i{
+  position: absolute;
+  margin-left:10px;
+  color:#aaa;
 }
 
 /* -----------------
