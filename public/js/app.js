@@ -53,7 +53,7 @@ function loadContacts(){
             email.innerHTML = item.email;
         let location = element.querySelector('#location');
             location.innerHTML = item.location.city+', '+ item.nat;
-
+						//stuff
 
         element.onclick = ()=>{
           document.querySelector('.modal .img img').src = item.picture.large;
