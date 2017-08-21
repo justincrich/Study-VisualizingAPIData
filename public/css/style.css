@@ -71,6 +71,12 @@ CARD
   align-items: center;
   margin:12px 12px;
   cursor:pointer;
+  transform: scale(1);
+  transition: all .1s ease-in-out;
+}
+
+.card:hover{
+  transform: scale(1.05);
 }
 
   .img{
@@ -95,12 +101,13 @@ CARD
     margin-left: 15px;
   }
 
-    /*.nameEmailLocation .name{
-      font-size: 18px;
-      font-weight: bold;
-      text-transform: capitalize;
-      color: #003;
-    }*/
+    .nameEmailLocation *{
+      max-width: 150px;
+      overflow:hidden;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .name{
       text-transform: capitalize;
@@ -122,7 +129,9 @@ MODAL
 
 
 .modal{
-  display: none; /* Hidden by default */
+   /* Hidden by default */
+  visibility: hidden;
+  opacity:0; /* opacity to control animation */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -132,6 +141,14 @@ MODAL
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: all .25s;
+}
+
+/*Animation for backdrop*/
+.modal.fadeIn{
+  visibility: visible;
+  opacity:1;
+
 }
 
 .modal-content{
@@ -146,6 +163,12 @@ MODAL
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateY(-50%);
+  transition: all .25s;
+}
+/*Animation for modal*/
+.modal.fadeIn .modal-content{
+  transform: translateY(0);
 }
 
   .close{
@@ -178,7 +201,7 @@ MODAL
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80%;
+    /*height: 80%;*/
   }
 
   .modal-content .img,.modal-content .name, .modal-content .email, .modal-content .phone,
@@ -198,9 +221,18 @@ MODAL
     background:rgba(218, 218, 218, 1);
   }
 
+  .modal .address{
+    max-width: 280px;
+    overflow: hidden;
+    /*line-height: 10px;*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .modal-content .phoneAddressBirthday{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    /*height: 25%;*/
   }

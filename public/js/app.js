@@ -22,17 +22,20 @@ loadContacts();
 window.onload = ()=>{
   //handle all clicks outside modal
   modal.onclick = ()=>{
-    modal.style.display = 'none';
+
+		modal.classList.remove('fadeIn');
+
   }
   document.querySelector('.close').onclick = ()=>{
-    modal.style.display = 'none';
+
+		modal.classList.remove('fadeIn');
   }
 
 }
 
 
 function loadContacts(){
-  fetch('https://randomuser.me/api/?results=12&inc=picture,email,name,login,location,nat,dob')
+  fetch('https://randomuser.me/api/?results=12&inc=picture,phone,email,name,login,location,nat,dob')
     .then(resp => resp.json())
     .then(json => {
       let results = json.results;
@@ -49,14 +52,22 @@ function loadContacts(){
         let email = element.querySelector('#email');
             email.innerHTML = item.email;
         let location = element.querySelector('#location');
-            location.innerHTML = item.location.city;
+            location.innerHTML = item.location.city+', '+ item.nat;
 
         element.onclick = ()=>{
           document.querySelector('.modal .img img').src = item.picture.large;
           document.querySelector('.modal .name').innerHTML = item.name.first+' '+item.name.last;
           document.querySelector('.modal .email').innerHTML = item.email;
           document.querySelector('.modal .location').innerHTML = item.location.city;
-          modal.style.display = 'flex';
+					let date = moment(item.dob);
+					document.querySelector('.modal .address').innerHTML =
+						item.location.street+', '+item.location.state+' '+
+						item.location.postcode+' '+item.nat;
+					document.querySelector('.modal .phone').innerHTML = item.phone;
+					document.querySelector('.modal .birthdate').innerHTML = 'Birthday: '+date.format('MM/DD/YY');
+					modal.classList.add('fadeIn');
+
+
         }
         console.log(element);
         contactContainer.append(element);
